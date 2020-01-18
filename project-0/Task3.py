@@ -43,3 +43,61 @@ Print the answer as a part of a message::
 to other fixed lines in Bangalore."
 The percentage should have 2 decimal digits
 """
+
+class Calls:
+	def __init__(self):
+		self.to_codes = set()
+
+		self.bangalore_fixed_callers = 0
+		self.bangalore_fixed_received = 0
+
+	def start_sort(self, calls_list):
+		# O(3n)
+		for call in calls_list:
+			if self._is_bangalore_fixed_line(call[0]):
+				self.bangalore_fixed_callers += 1
+				if call[1].startswith('(0'):
+					self.to_codes.add(self._get_fixed_line_code_integer(call[1]))
+					if self._is_bangalore_fixed_line(call[1]):
+						self.bangalore_fixed_received = self.bangalore_fixed_received + 1
+			
+				result = self._get_mobile_number_prefix(call)
+				if result:
+					self.to_codes.add(result)
+
+	def _is_bangalore_fixed_line(self, call):
+		return call.startswith('(080)')
+
+	def _get_fixed_line_code_integer(self, call):
+		# O(1)
+		if call.startswith('(0'):
+			code = call.split(')', 1)[0]
+			code = code[1:]
+			return code
+
+	def _get_mobile_number_prefix(self, call):
+		# O(1)
+		if call[1].startswith('7') or call[1].startswith('8') or call[1].startswith('9') and ' ' in call[1]:
+				string = call[1]
+				return string[:4]
+
+	def print_codes(self):
+		# O(n + 1)
+		print("The numbers called by people in Bangalore have codes:")
+		for code in sorted(self.to_codes):
+			print(code)
+	def _calc_percentage(self):
+        # O(1)
+		math_is_hard = (float(self.bangalore_fixed_received) / float(self.bangalore_fixed_callers)) * 100
+		return math_is_hard
+
+	def print_percentage(self):
+		# O(1)
+		result = self._calc_percentage()
+		print("%.2f percent of calls from fixed lines in Bangalore are calls" \
+				" to other fixed lines in Bangalore." % result)
+
+c = Calls()
+c.start_sort(calls)
+c.print_codes()
+c.print_percentage()

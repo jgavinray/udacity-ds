@@ -1,0 +1,40 @@
+Task0.py:
+Not counting the loading of the CSV into a list, or the calculating the built in of the len() function. The run time of this is O(1) as the input size doesn't effect printing statements.
+
+Task1.py:
+Not counting the loading of the CSV into a list, or the calculating the built in of the len() function. The run time of this is O(n) as the worst case.
+
+Task2.py:
+Not counting the loading of the CSV into a list.
+Walking through the class:
+print_longest_call - O(1)
+_iterate_through_calls - O(n + 2)
+_update_unique_numbers - The average case of this is O(n^2) as we are iterating through two lists.
+_update_number_longest_called - O(1) Because we are setting elements of a specific call.
+O(n) average
+
+Task3.py:
+Not counting the loading of the CSV into a list.
+Walking through the class:
+start_sort - O(3n) worst case
+_is_bangalore_fixed_line - O(1)
+_get_fixed_line_code - O(1) - this is not including the cost of the built in functions
+_get_mobile_number_prefix - O(1)
+_store_code_or_prefix_of_receiving_number - O(1)
+_calc_percentage - O(1)
+print_codes - O(n) - Not including the sort time
+print_percentage - O(1)
+O(n)
+
+Task4.py:
+Not counting the loading of the CSV into a list.
+Walking through the class:
+create_list - O(1)
+_set_unique_text_numbers - O(n)
+_sort_unique_call_numbers - O(n)
+_check_for_telemarketing_activity - O(n)
+_has_sent_texts - O(1)
+_has_received_texts - O(1)
+_has_received_calls - O(1)
+print_results - O(n) worst case
+O(n)
